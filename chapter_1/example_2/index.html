@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Example 2</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script>
+            $(function() {
+                var bicycles = [{
+                     name: "A fast bike",
+                     type: "Road Bike"
+                     }, {
+                     name: "An even faster bike",
+                     type: "Road Bike"
+                     }, {
+                     name: "A springy bike",
+                     type: "Mountain Bike"
+                     }, {
+                     name: "A springier bike",
+                     type: "Mountain Bike"
+                     }, {
+                     name: "An all-terain bike",
+                     type: "Mountain Bike"
+                     }, {
+                     name: "A classy bike",
+                     type: "Urban Bike"
+                     }, {
+                     name: "A modern bike",
+                     type: "Urban Bike"
+                     }, {
+                     name: "A blue bike",
+                     type: "Children Bike"
+                     }, {
+                     name: "A pink bike",
+                     type: "Children Bike"
+                     }, {
+                     name: "A noisy bike",
+                     type: "Children Bike"
+                     }, {
+                     name: "A clown bike",
+                     type: "Children Bike"
+                 }];
+                
+                var out = 'There are ' + bicycles.length + ' bicycles:';
+                var result = _.countBy(bicycles, function(bicycle) {
+                    return bicycle.type;
+                });
+                console.log('_.countBy result:', result);
+                _.pairs(result).forEach(function(typeCountPair) {
+                    var key = typeCountPair[0];
+                    var val = typeCountPair[1];
+                    out = [out, '<br />', ' - ', val, ' of type: ', key].join('');
+                });
+                $('#out').html(out);
+            });
+        </script>
+    </body>
+</html>
